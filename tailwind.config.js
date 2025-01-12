@@ -51,7 +51,12 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		}
-  	}
+  	},
+	fontFamily: {
+		sans: ['Open Sans','sans-serif'],
+		fairplay: ['Fairplay Display', 'serif']
+
+	}
   },
   plugins: [require("tailwindcss-animate")],
 }
