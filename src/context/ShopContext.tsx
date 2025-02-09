@@ -20,6 +20,8 @@
 import { createContext, useEffect, useState } from "react";
 import { products, Product } from "../assets/assets"; // Import đúng kiểu dữ liệu
 import { toast } from "react-toastify";
+import { it } from "node:test";
+import { useNavigate } from "react-router-dom";
 
 // Định nghĩa kiểu dữ liệu cho context
 interface ShopContextType {
@@ -52,7 +54,7 @@ const ShopContextProvider: React.FC<ShopContextProviderProps> = ({
   const [search, setSearch] = useState(``);
   const [showSearch, setShowSearch] = useState(true);
   const [cartItems, setCartItems] = useState({});
-
+  const navigate = useNavigate();
   const addToCart = async (itemId: string, size: string) => {
     if (!size) {
       toast.error("Select Product Size");
@@ -89,6 +91,20 @@ const ShopContextProvider: React.FC<ShopContextProviderProps> = ({
     cartData[itemId][size] = quantity;
     setCartItems(cartData);
   };
+  const getCartAmount = () => {
+    let totalAmount = 0;
+    for (const items in cartItems) {
+      let itemInfo = products.find((products) => products._id === items);
+      for (const item in cartItems[items]) {
+        try {
+          if (cartItems[items][item] > 0) {
+            totalAmount += itemInfo?.price * cartItems[items][item];
+          }
+        } catch (error) {}
+      }
+    }
+    return totalAmount;
+  };
   // useEffect(() => {
   //   console.log(cartItems);
   // }, [cartItems]);
@@ -104,6 +120,8 @@ const ShopContextProvider: React.FC<ShopContextProviderProps> = ({
     addToCart,
     getCartCount,
     updateQuantity,
+    getCartAmount,
+    navigate,
   };
 
   return (
