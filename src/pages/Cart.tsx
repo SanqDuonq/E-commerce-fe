@@ -1,15 +1,19 @@
 import { assets } from "@/assets/assets";
+import CartTotal from "@/components/layout/CartTotal";
 import Title from "@/components/layout/Title";
 import { ShopContext } from "@/context/ShopContext";
 import { Target } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 
 const Cart = () => {
-  const { products, currency, cartItems, updateQuantity } =
-    useContext(ShopContext)!;
-  const [cartData, setCartData] = useState([]);
+  const { products, currency, cartItems, updateQuantity, navigate } =
+    useContext(ShopContext);
+  const [cartData, setCartData] = useState<
+    { _id: string; size: string; quantity: number }[]
+  >([]);
+
   useEffect(() => {
-    const tempData = [];
+    const tempData: { _id: string; size: string; quantity: number }[] = [];
     for (const items in cartItems) {
       for (const item in cartItems[items]) {
         if (cartItems[items][item] > 0) {
@@ -33,6 +37,9 @@ const Cart = () => {
           const productData = products.find(
             (product) => product._id === item._id
           );
+          if (!productData) {
+            return null; // hoặc hiển thị một thông báo lỗi
+          }
           return (
             <div
               key={index}
@@ -83,6 +90,19 @@ const Cart = () => {
             </div>
           );
         })}
+        <div className="flex justify-end my-20">
+          <div className="w-full sm:w-[450px]">
+            <CartTotal />
+            <div className="w-full text-end">
+              <button
+                onClick={() => navigate("/place-order")}
+                className="bg-black text-white text-sm my-8 px-8 py-3 "
+              >
+                PROCEED TO CHECKOUT
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

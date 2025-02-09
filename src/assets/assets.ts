@@ -27,6 +27,8 @@ import star_icon from "./star_icon.png";
 import star_dull_icon from "./star_dull_icon.png";
 import bin_icon from "./bin_icon.png";
 import logo from "./logo.png";
+import stripe_logo from "./stripe_logo.webp";
+import paypal_logo from "./paypal_logo.jpg";
 
 export const assets = {
   logo,
@@ -43,6 +45,8 @@ export const assets = {
   star_icon,
   star_dull_icon,
   bin_icon,
+  stripe_logo,
+  paypal_logo,
 };
 // export const products = [
 //   {
