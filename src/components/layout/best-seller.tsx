@@ -40,8 +40,8 @@
 // export default BestSeller;
 import { ShopContext } from "@/context/ShopContext";
 import React, { useContext, useEffect, useState } from "react";
-import ProductItem from "./ProductItem"; // Đảm bảo import component
-import Title from "./Title";
+import ProductItem from "./product-item"; // Đảm bảo import component
+import Title from "./title";
 
 const BestSeller = () => {
   const { products } = useContext(ShopContext)!; // Dùng '!' để chắc chắn không null

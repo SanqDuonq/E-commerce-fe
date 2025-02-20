@@ -1,5 +1,5 @@
 import { assets } from "@/assets/assets";
-import RelatedProducts from "@/components/layout/RelatedProducts";
+import RelatedProducts from "@/components/layout/related-products";
 import { ShopContext } from "@/context/ShopContext";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

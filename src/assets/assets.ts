@@ -29,7 +29,9 @@ import bin_icon from "./bin_icon.png";
 import logo from "./logo.png";
 import stripe_logo from "./stripe_logo.webp";
 import paypal_logo from "./paypal_logo.jpg";
-
+import about_img from "./about-img.jpg";
+import contact_img from "./contact_img.jpg";
+import chair_02 from "./chair_01.jpeg";
 export const assets = {
   logo,
   search_icon,
@@ -47,6 +49,8 @@ export const assets = {
   bin_icon,
   stripe_logo,
   paypal_logo,
+  about_img,
+  contact_img,
 };
 // export const products = [
 //   {
@@ -95,7 +99,7 @@ export const products: Product[] = [
     name: "Faible Collection",
     description: "Faible 100 White Performance Fabric Sofa",
     price: 5000000,
-    image: [p_img1],
+    image: [p_img1, chair_02],
     category: "Sofa",
     subcategory: "Sofa & sectional collections",
     sizes: ["CM", "NC", "C&M"],

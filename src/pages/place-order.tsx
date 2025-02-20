@@ -1,12 +1,12 @@
 import { assets } from "@/assets/assets";
-import CartTotal from "@/components/layout/CartTotal";
-import Title from "@/components/layout/Title";
+import CartTotal from "@/components/layout/cart-total";
+import Title from "@/components/layout/title";
 import { ShopContext } from "@/context/ShopContext";
 import React, { useContext, useState } from "react";
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
-  const { navigate } = useContext(ShopContext);
+  const { navigate } = useContext(ShopContext)!;
   return (
     <div className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t">
       {/*  -------------- Left Side -------------- */}
