@@ -160,12 +160,71 @@
 // };
 
 // export default SignUp;
-import React from "react";
+import { signUpAPI } from "@/api/auth.api";
+import ButtonComponent from "@/components/button";
+import InputComponent from "@/components/input";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const [signUp, setSignUp] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+  });
+  console.log(signUp);
+  const mutation = useMutation({
+    mutationKey: ["sign-up"],
+    mutationFn: () => signUpAPI(signUp),
+    onSuccess: () => {
+      navigate("/");
+    },
+  });
+  const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    mutation.mutate();
+  };
+
   return (
-    <form>
-      <div></div>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800 border border-gray-700 p-8"
+    >
+      <div className="inline-flex items-center gap-2 mb-2">
+        <p className="prata-regular text-3xl">Sign Up</p>
+        <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
+      </div>
+      <InputComponent
+        placeholder="FullName"
+        type="text"
+        value={signUp.fullName}
+        onChange={(text) =>
+          setSignUp({ ...signUp, fullName: text.target.value })
+        }
+      />
+      <InputComponent
+        placeholder="Email"
+        type="text"
+        value={signUp.email}
+        onChange={(text) => setSignUp({ ...signUp, email: text.target.value })}
+      />
+      <InputComponent
+        placeholder="Password"
+        type="password"
+        value={signUp.password}
+        onChange={(password) =>
+          setSignUp({ ...signUp, password: password.target.value })
+        }
+      />
+      <ButtonComponent name="Sign Up" isLoading={mutation.isPending} />
+      <p className="gap-x-2">
+        Do you have account?{" "}
+        <Link to="/login" className="text-blue-500 underline">
+          Login
+        </Link>
+      </p>
     </form>
   );
 };
