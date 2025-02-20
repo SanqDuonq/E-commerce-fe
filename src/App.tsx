@@ -35,7 +35,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/place-order" element={<PlaceOrder />} />
             <Route path="/order" element={<Order />} />
-            {/* <Route path="/sign-up" element={<SignUp />} /> */}
+            <Route path="/sign-up" element={<SignUp />} />
           </Routes>
           <Footer />
         </QueryClientProvider>
