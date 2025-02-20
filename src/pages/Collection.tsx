@@ -1,6 +1,6 @@
 import { assets } from "@/assets/assets";
-import ProductItem from "@/components/layout/ProductItem";
-import Title from "@/components/layout/Title";
+import ProductItem from "@/components/layout/product-item";
+import Title from "@/components/layout/title";
 import { ShopContext } from "@/context/ShopContext";
 import React, { useContext, useState, useEffect } from "react";
 
