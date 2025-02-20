@@ -1,4 +1,3 @@
-import { Button } from "./ui/button";
 import { LoaderCircle } from "lucide-react";
 
 interface IButtonComponent {
