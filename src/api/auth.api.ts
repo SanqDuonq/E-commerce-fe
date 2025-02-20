@@ -1,0 +1,8 @@
+import { ISignIn } from "../interface/auth.interface";
+import APIConfig from "./api.config";
+
+export const signInAPI = async (data: ISignIn) => {
+  const res = await APIConfig.post("/api/auth/sign-in", data);
+  return res;
+};
+export const sign;
