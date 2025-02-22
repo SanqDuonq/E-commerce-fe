@@ -16,6 +16,7 @@ import Login from "./pages/login";
 import PlaceOrder from "./pages/place-order";
 import Order from "./pages/order";
 import Navbar from "./components/layout/navbar";
+import VerifyEmail from "./pages/verify-email";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/place-order" element={<PlaceOrder />} />
             <Route path="/order" element={<Order />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
           </Routes>
           <Footer />
         </QueryClientProvider>

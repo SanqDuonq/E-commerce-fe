@@ -163,12 +163,14 @@
 import { signUpAPI } from "@/api/auth.api";
 import ButtonComponent from "@/components/button";
 import InputComponent from "@/components/input";
+import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [signUp, setSignUp] = useState({
     fullName: "",
     email: "",
@@ -179,6 +181,10 @@ const SignUp = () => {
     mutationKey: ["sign-up"],
     mutationFn: () => signUpAPI(signUp),
     onSuccess: () => {
+      toast({
+        title: "Sign Up Success",
+        description: "Hi ${si}",
+      });
       navigate("/");
     },
   });

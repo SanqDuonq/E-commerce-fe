@@ -1,13 +1,15 @@
 import { signInAPI } from "@/api/auth.api";
 import ButtonComponent from "@/components/button";
 import InputComponent from "@/components/input";
+import { useToast } from "@/hooks/use-toast";
+import { IApiError } from "@/interface/api-error.interface";
 import { useMutation } from "@tanstack/react-query";
-
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [signIn, setSignIn] = useState({
     email: "",
     password: "",
@@ -17,7 +19,20 @@ const Login = () => {
     mutationKey: ["sign-in"],
     mutationFn: () => signInAPI(signIn),
     onSuccess: () => {
+      toast({
+        title: "Login Successful!",
+        description: `Welcome ${signIn.email}`,
+        duration: 3000,
+      });
       navigate("/");
+    },
+    onError: (error: IApiError) => {
+      toast({
+        variant: "destructive",
+        title: "Login Failed!",
+        description: error.response.data.message,
+        duration: 3000,
+      });
     },
   });
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
@@ -52,7 +67,9 @@ const Login = () => {
         />
         <div className="w-full flex justify-between text-sm">
           <p className=" cursor-pointer underline">Forgot your password?</p>
-          <p className=" cursor-pointer">Sign Up</p>
+          <Link to="/sign-up" className=" cursor-pointer">
+            Sign Up
+          </Link>
         </div>
         <ButtonComponent name="Log In" isLoading={mutation.isPending} />
       </form>
