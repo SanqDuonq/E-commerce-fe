@@ -1,5 +1,4 @@
 import ButtonComponent from "@/components/button";
-import Title from "@/components/layout/title";
 import {
   InputOTP,
   InputOTPGroup,
