@@ -32,6 +32,7 @@ import paypal_logo from "./paypal_logo.jpg";
 import about_img from "./about-img.jpg";
 import contact_img from "./contact_img.jpg";
 import chair_02 from "./chair_01.jpeg";
+import forgot_password from "./forgot.jpg";
 export const assets = {
   logo,
   search_icon,
@@ -51,6 +52,7 @@ export const assets = {
   paypal_logo,
   about_img,
   contact_img,
+  forgot_password,
 };
 // export const products = [
 //   {

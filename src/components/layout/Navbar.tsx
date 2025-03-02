@@ -11,11 +11,11 @@ const Navbar = () => {
         <img src={assets.logo} className="w-10" alt="" />
       </Link>
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
-        <NavLink to="/" className="flex flex-col item-center gap-1">
+        <NavLink to="/" className="flex flex-col items-center gap-1">
           <p>HOME</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
-        <NavLink to="/collection" className="flex flex-col item-center gap-1">
+        <NavLink to="/collection" className="flex flex-col items-center gap-1">
           <p>COLLECTION</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
