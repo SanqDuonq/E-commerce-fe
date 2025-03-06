@@ -1,4 +1,5 @@
 import { assets } from "@/assets/assets";
+import NavbarCollection from "@/components/layout/navbar-colection";
 import ProductItem from "@/components/layout/product-item";
 import Title from "@/components/layout/title";
 import Filter from "@/components/ui/filter";
@@ -12,6 +13,7 @@ const Rugs = () => {
 
   return (
     <>
+      <NavbarCollection />
       <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
         {/* Filter Option */}
         <div className="min-w-60">

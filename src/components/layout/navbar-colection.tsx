@@ -108,11 +108,7 @@ const NavbarCollection = () => {
     },
     {
       label: "Rugs",
-      links: [
-        { name: "Rugs by Type", to: "/decor/wall-art" },
-        { name: "Rugs by Size", to: "/decor/mirrors" },
-        { name: "Rugs by Material", to: "" },
-      ],
+      links: [{ name: "Rugs by Type", to: "/decor/wall-art" }],
     },
     {
       label: "Pillows & Throws",
