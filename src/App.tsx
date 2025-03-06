@@ -14,7 +14,7 @@ import Product from "./pages/product";
 import Cart from "./pages/cart";
 import Login from "./pages/auth/login";
 import PlaceOrder from "./pages/place-order";
-import Order from "./pages/order";
+import Order from "./pages/Orders/order";
 import Navbar from "./components/layout/navbar";
 import VerifyEmail from "./pages/auth/verify-email";
 import Kitchen from "./pages/collection/furniture/kitchen";
@@ -23,6 +23,8 @@ import BedRoom from "./pages/collection/furniture/bedroom";
 import Office from "./pages/collection/furniture/office";
 import ForgotPassword from "./pages/auth/forgot-password";
 import ResetPassword from "./pages/auth/reset-password";
+import Profile from "./pages/auth/profile";
+import Rugs from "./pages/collection/rugs/rugs";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -50,6 +52,8 @@ function App() {
             <Route path="furniture/office" element={<Office />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="rest-password" element={<ResetPassword />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="rugs" element={<Rugs />} />
           </Routes>
           <Footer />
         </QueryClientProvider>
