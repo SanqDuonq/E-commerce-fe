@@ -56,6 +56,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="rugs" element={<Rugs />} />
             <Route path="order-list" element={<ListOrder />} />
+            <Route path="reset-password" element={<ResetPassword />} />
           </Routes>
           <Footer />
         </QueryClientProvider>
