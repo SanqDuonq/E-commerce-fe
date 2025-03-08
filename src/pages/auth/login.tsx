@@ -66,7 +66,9 @@ const Login = () => {
           }
         />
         <div className="w-full flex justify-between text-sm">
-          <p className=" cursor-pointer underline">Forgot your password?</p>
+          <Link to="/forgot-password" className="cursor-pointer underline">
+            Forgot your password?
+          </Link>
           <Link to="/sign-up" className=" cursor-pointer">
             Sign Up
           </Link>

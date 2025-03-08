@@ -5,19 +5,43 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { verifyEmailAPI } from "@/api/auth.api";
+import { useToast } from "@/hooks/use-toast";
 const VerifyEmail = () => {
-  const [value, setValue] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { toast } = useToast();
+  const [verify, setVerify] = useState({
+    email: location.state?.email,
+    OTP: "",
+  });
+  console.log(verify);
+  const mutation = useMutation({
+    mutationKey: ["verify-email"],
+    mutationFn: () => verifyEmailAPI({ email: verify.email, OTP: verify.OTP }),
+    onSuccess: () => {
+      toast({
+        title: "Verify Email Success",
+        description: `Hi ${verify.email}, your email has been verified.`,
+      });
+      navigate("/");
+    },
+  });
   return (
     <div className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800 border border-gray-700 p-8">
       <div className="flex flex-col items-center justify-center h-40 space-y-2">
         <div className="inline-flex items-center gap-2 mb-2">
           <p className="prata-regular text-3xl">Verify OTP</p>
+
           <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
         </div>
+        <p>{verify.email}</p>
         <InputOTP
           maxLength={6}
-          value={value}
-          onChange={(value) => setValue(value)}
+          value={verify.OTP}
+          onChange={(value) => setVerify({ ...verify, OTP: value })}
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -29,13 +53,17 @@ const VerifyEmail = () => {
           </InputOTPGroup>
         </InputOTP>
         <div className="text-center text-sm">
-          {value === "" ? (
+          {verify.OTP === "" ? (
             <>Enter your one-time password.</>
           ) : (
-            <>You entered: {value}</>
+            <>You entered: {verify.OTP}</>
           )}
         </div>
-        <ButtonComponent name="Resend" />
+        <ButtonComponent
+          name="Submit"
+          isLoading={mutation.isPending}
+          onClick={() => mutation.mutate()}
+        />
       </div>
     </div>
   );

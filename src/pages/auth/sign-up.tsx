@@ -183,9 +183,9 @@ const SignUp = () => {
     onSuccess: () => {
       toast({
         title: "Sign Up Success",
-        description: "Hi ${si}",
+        description: `Hi ${signUp.fullName}, your account has been created.`,
       });
-      navigate("/");
+      navigate("/verify-email", { state: { email: signUp.email } });
     },
   });
   const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
