@@ -15,13 +15,13 @@ const ForgotPassword = () => {
   console.log(forgot);
   const mutation = useMutation({
     mutationKey: ["forgot-password"],
-    mutationFn: () => forgotPasswordAPI(forgot),
+    mutationFn: () => forgotPasswordAPI({ email: forgot.email }),
     onSuccess: () => {
       toast({
         title: "OTP sent email",
         description: `Hi ${forgot.email}, we have sent you an email.`,
       });
-      navigate("/reset-password");
+      navigate("/reset-password", { state: { email: forgot.email } });
     },
   });
 
@@ -46,11 +46,12 @@ const ForgotPassword = () => {
             <ButtonComponent
               name="Reset password"
               isLoading={mutation.isPending}
+              onClick={() => mutation.mutate()}
             />
           </div>
           <div className="flex flex-row justify-center items-center">
             <img className=" w-5 " src={assets.dropdown_icon} alt="" />
-            <Link to="/" className="">
+            <Link to="/login" className="">
               Back to log in
             </Link>
           </div>
