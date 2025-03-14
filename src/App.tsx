@@ -26,6 +26,14 @@ import ResetPassword from "./pages/auth/reset-password";
 import Profile from "./pages/auth/profile";
 import Rugs from "./pages/collection/rugs/rugs";
 import ListOrder from "./pages/orders/order-list";
+import Furniture from "./pages/collection/furniture/furniture";
+import Bath from "./pages/collection/bedding-bath/bedding-bath";
+import DecorMirrors from "./pages/collection/decor-mirrors/decor-mirrors";
+import Lighting from "./pages/collection/lighting/lighting";
+import Outdoor from "./pages/collection/outdoor/outdoor";
+import PillowThrows from "./pages/collection/pillows-throws/pillows-throws";
+import DinnerWare from "./pages/collection/tabletop-bar/dinnerware-flatware";
+import TabletopBar from "./pages/collection/tabletop-bar/tabletop-bar";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -38,6 +46,19 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/collection" element={<Collection />} />
+            <Route path="rugs" element={<Rugs />} />
+            <Route path="furniture" element={<Furniture />} />
+            <Route path="furniture/living-room" element={<LivingRoom />} />
+            <Route path="furniture/kitchen" element={<Kitchen />} />
+            <Route path="furniture/bedroom" element={<BedRoom />} />
+            <Route path="furniture/office" element={<Office />} />
+            <Route path="bedding-bath" element={<Bath />} />
+            <Route path="decor-mirrors" element={<DecorMirrors />} />
+            <Route path="lighting" element={<Lighting />} />
+            <Route path="outdoor" element={<Outdoor />} />
+            <Route path="pillows-throws" element={<PillowThrows />} />
+            <Route path="tabletop-bar/dinnerware" element={<DinnerWare />} />
+            <Route path="tabletop-bar/tabletop" element={<TabletopBar />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/product/:productId" element={<Product />} />
@@ -47,14 +68,9 @@ function App() {
             <Route path="/order" element={<Order />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
-            <Route path="furniture/living-room" element={<LivingRoom />} />
-            <Route path="furniture/kitchen" element={<Kitchen />} />
-            <Route path="furniture/bedroom" element={<BedRoom />} />
-            <Route path="furniture/office" element={<Office />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="rest-password" element={<ResetPassword />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="rugs" element={<Rugs />} />
             <Route path="order-list" element={<ListOrder />} />
             <Route path="reset-password" element={<ResetPassword />} />
           </Routes>

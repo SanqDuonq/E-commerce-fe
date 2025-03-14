@@ -21,6 +21,8 @@ const Rugs = () => {
           {/* Rugs by Type */}
           <Filter
             titleFilter="Rugs by Type"
+            value="filterProducts"
+            onChange={() => setFilterProducts}
             filterDetail_01="Area Rugs"
             filterDetail_02="Runner Rugs"
             filterDetail_03="Doormats"
@@ -29,6 +31,8 @@ const Rugs = () => {
           {/* Rugs by Size */}
           <Filter
             titleFilter="Rugs by Size"
+            value="filterProducts"
+            onChange={() => setFilterProducts}
             filterDetail_01="2.5' x 8' Rugs"
             filterDetail_02="5' x 8' Rugs"
             filterDetail_03="6' x 9' Rugs"
@@ -38,6 +42,8 @@ const Rugs = () => {
           {/* Rugs by Material */}
           <Filter
             titleFilter="Rugs by Material"
+            value="filterProducts"
+            onChange={() => setFilterProducts}
             filterDetail_01="Wool & Wool Blend Rugs"
             filterDetail_02="Viscose Rugs"
             filterDetail_03="Performance Rugs"
