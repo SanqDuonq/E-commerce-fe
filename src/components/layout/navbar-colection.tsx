@@ -74,7 +74,7 @@ const NavbarCollection = () => {
     {
       label: "Furniture",
       links: [
-        { name: "Living Room Furniture", to: "/furniture/living-room" },
+        { name: "Living Room Furniture", to: "furniture/living-room" },
         { name: "Kitchen Furniture", to: "/furniture/kitchen" },
         { name: "Bedroom Furniture", to: "/furniture/bedroom" },
         { name: "Office Furniture", to: "/furniture/office" },
@@ -94,7 +94,6 @@ const NavbarCollection = () => {
         { name: "Mirrors", to: "/decor/wall-art" },
         { name: "Wall Art", to: "/decor/mirrors" },
         { name: "HardWare", to: "/decor/hardware" },
-        { name: "Wall Art", to: "/" },
       ],
     },
     {
@@ -108,7 +107,7 @@ const NavbarCollection = () => {
     },
     {
       label: "Rugs",
-      links: [{ name: "Rugs by Type", to: "/decor/wall-art" }],
+      links: [{ name: "Rugs by Type", to: "/rugs" }],
     },
     {
       label: "Pillows & Throws",

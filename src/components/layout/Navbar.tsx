@@ -8,15 +8,13 @@ const Navbar = () => {
   const [auth, setAuth] = useState(false);
   console.log(auth);
   const { setShowSearch, getCartCount } = useContext(ShopContext);
+  //#region Logout
   const handleLogout = () => {
     localStorage.clear();
     sessionStorage.clear();
     setAuth(false);
     navigate("/login");
-
-    // localStorage.removeItem("auth");
-    // setAuth(false);
-    // navigate("/login");
+    //#endregion
   };
   return (
     <div className="flex items-center justify-between py-5 font-medium">
