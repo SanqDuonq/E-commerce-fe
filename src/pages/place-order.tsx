@@ -11,6 +11,16 @@ interface ShippingOption {
   price: number;
   description: string;
 }
+interface Voucher {
+  _id: string;
+  code: string;
+  name: string;
+  description: string;
+  discountType: string;
+  discountValue: number;
+  minOrderValue: number;
+  maxDiscountValue: number;
+}
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
   const { navigate } = useContext(ShopContext)!;
@@ -34,6 +44,28 @@ const PlaceOrder = () => {
       label: "Priority",
       price: 15,
       description: "Giao hàng hỏa tốc trong vòng 12 giờ",
+    },
+  ];
+  const vouchers: Voucher[] = [
+    {
+      _id: "67db44428dc5637cdf7b2cbe",
+      code: "SUMMER2024",
+      name: "Giảm giá mùa hè",
+      description: "Giảm 20% cho tất cả sản phẩm",
+      discountType: "percentage",
+      discountValue: 20,
+      minOrderValue: 100000,
+      maxDiscountValue: 500000,
+    },
+    {
+      _id: "67db44428dc5637cdf7b2cbe",
+      code: "SUMMER2024",
+      name: "Giảm giá mùa hè",
+      description: "Giảm 20% cho tất cả sản phẩm",
+      discountType: "percentage",
+      discountValue: 20,
+      minOrderValue: 100000,
+      maxDiscountValue: 500000,
     },
   ];
 
@@ -84,6 +116,7 @@ const PlaceOrder = () => {
           value={shipping}
           onChange={setShipping}
         />
+        <VoucherSelection vouchers={vouchers} />
       </div>
       {/*  -------------- Right Side -------------- */}
       <div className="mt-8">
