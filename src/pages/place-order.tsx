@@ -1,12 +1,42 @@
 import { assets } from "@/assets/assets";
 import CartTotal from "@/components/layout/cart-total";
 import Title from "@/components/layout/title";
+import SelectComponent from "@/components/select";
+import VoucherSelection from "@/components/layout/voucher/voucher-selection";
 import { ShopContext } from "@/context/ShopContext";
-import React, { useContext, useState } from "react";
-
+import { useContext, useState } from "react";
+interface ShippingOption {
+  value: string;
+  label: string;
+  price: number;
+  description: string;
+}
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
   const { navigate } = useContext(ShopContext)!;
+  // const {navigate} = useNavigate(ShopContext);
+  const [shipping, setShipping] = useState("");
+  const ShippingOptions: ShippingOption[] = [
+    {
+      value: "standard",
+      label: "Standard",
+      price: 5,
+      description: "Giao hàng tiêu chuẩn trong 1 - 2 ngày",
+    },
+    {
+      value: "express",
+      label: "Express",
+      price: 10,
+      description: "Giao hàng nhanh chóng trong 1 ngày",
+    },
+    {
+      value: "priority",
+      label: "Priority",
+      price: 15,
+      description: "Giao hàng hỏa tốc trong vòng 12 giờ",
+    },
+  ];
+
   return (
     <div className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t">
       {/*  -------------- Left Side -------------- */}
@@ -28,11 +58,6 @@ const PlaceOrder = () => {
         </div>
         <input
           className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
-          type="email"
-          placeholder="Email address"
-        />
-        <input
-          className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           type="text"
           placeholder="street"
         />
@@ -45,18 +70,6 @@ const PlaceOrder = () => {
           <input
             className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
             type="text"
-            placeholder="State"
-          />
-        </div>
-        <div className="flex gap-3">
-          <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
-            type="number"
-            placeholder="zipcode"
-          />
-          <input
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
-            type="text"
             placeholder="Country"
           />
         </div>
@@ -64,6 +77,12 @@ const PlaceOrder = () => {
           className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           type="number"
           placeholder="Phone"
+        />
+        <SelectComponent
+          label="Shipping Option"
+          options={ShippingOptions}
+          value={shipping}
+          onChange={setShipping}
         />
       </div>
       {/*  -------------- Right Side -------------- */}
