@@ -15,12 +15,12 @@ const VerifyEmail = () => {
   const { toast } = useToast();
   const [verify, setVerify] = useState({
     email: location.state?.email,
-    OTP: "",
+    otp: "",
   });
   console.log(verify);
   const mutation = useMutation({
     mutationKey: ["verify-email"],
-    mutationFn: () => verifyEmailAPI({ email: verify.email, OTP: verify.OTP }),
+    mutationFn: () => verifyEmailAPI({ email: verify.email, otp: verify.otp }),
     onSuccess: () => {
       toast({
         title: "Verify Email Success",
@@ -40,8 +40,8 @@ const VerifyEmail = () => {
         <p>{verify.email}</p>
         <InputOTP
           maxLength={6}
-          value={verify.OTP}
-          onChange={(value) => setVerify({ ...verify, OTP: value })}
+          value={verify.otp}
+          onChange={(value) => setVerify({ ...verify, otp: value })}
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -53,10 +53,10 @@ const VerifyEmail = () => {
           </InputOTPGroup>
         </InputOTP>
         <div className="text-center text-sm">
-          {verify.OTP === "" ? (
+          {verify.otp === "" ? (
             <>Enter your one-time password.</>
           ) : (
-            <>You entered: {verify.OTP}</>
+            <>You entered: {verify.otp}</>
           )}
         </div>
         <ButtonComponent

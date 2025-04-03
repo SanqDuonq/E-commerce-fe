@@ -31,19 +31,19 @@ const PlaceOrder = () => {
       value: "standard",
       label: "Standard",
       price: 5,
-      description: "Giao hàng tiêu chuẩn trong 1 - 2 ngày",
+      description: "Giao hàng trong 1 - 2 ngày",
     },
     {
       value: "express",
       label: "Express",
       price: 10,
-      description: "Giao hàng nhanh chóng trong 1 ngày",
+      description: "Giao hàng trong 1 ngày",
     },
     {
       value: "priority",
       label: "Priority",
       price: 15,
-      description: "Giao hàng hỏa tốc trong vòng 12 giờ",
+      description: "Giao hàng trong vòng 12 giờ",
     },
   ];
   const vouchers: Voucher[] = [
@@ -116,6 +116,7 @@ const PlaceOrder = () => {
           value={shipping}
           onChange={setShipping}
         />
+
         <VoucherSelection vouchers={vouchers} />
       </div>
       {/*  -------------- Right Side -------------- */}
@@ -123,6 +124,7 @@ const PlaceOrder = () => {
         <div className="mt-8 min-w-80">
           <CartTotal />
         </div>
+
         <div className="mt-12">
           <Title text1={"PAYMENT"} text2={"METHOD"} />
           {/*  -------------- Payment Method Selection -------------- */}
@@ -147,7 +149,7 @@ const PlaceOrder = () => {
                   method === "paypal" ? "bg-green-400" : ""
                 } `}
               ></p>
-              <img className="h-5 mx-4" src={assets.paypal_logo} alt="" />
+              <img className="h-5 mx-4" src={assets.momo_logo} alt="" />
             </div>
             <div
               onClick={() => setMethod("cod")}

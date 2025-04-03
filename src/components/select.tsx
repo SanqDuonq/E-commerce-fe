@@ -21,12 +21,13 @@ const SelectComponent = ({
 
   // const getShippingPrice = () => {
   //   return selectedOption?.price || 0;
-  // };
+  // };"
   return (
     <div>
       <p className="mb-2">{label}</p>
-      <select
-          className="w-full px-3"
+      <div>
+        <select
+          className="w-full px-3 border border-gray-300 "
           value={value}
           onChange={(e) => onChange(e.target.value)}
         >
@@ -38,6 +39,7 @@ const SelectComponent = ({
             </option>
           ))}
         </select>
+      </div>
     </div>
   );
 };

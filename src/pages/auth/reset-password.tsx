@@ -4,7 +4,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import InputComponent from "@/components/input";
 import ButtonComponent from "@/components/button";
 import { useMutation } from "@tanstack/react-query";
@@ -15,9 +15,11 @@ import { resetPasswordAPI } from "@/api/auth.api";
 const ResetPassword = () => {
   // const [value, setValue] = useState("");
   const { toast } = useToast();
+  const location = useLocation();
   const navigate = useNavigate();
   const [reset, setReset] = useState({
-    OTP: "",
+    email: location.state?.email,
+    otp: "",
     newPassword: "",
   });
   console.log(reset);
@@ -25,7 +27,8 @@ const ResetPassword = () => {
     mutationKey: ["reset-password"],
     mutationFn: () =>
       resetPasswordAPI({
-        OTP: reset.OTP,
+        email: reset.email,
+        otp: reset.otp,
         newPassword: reset.newPassword,
       }),
     onSuccess: () => {
@@ -41,7 +44,7 @@ const ResetPassword = () => {
       <div className="bg-white shadow-lg rounded-xl p-6 max-w-md w-full">
         <h2 className="text-2xl font-semibold text-center">Enter your code</h2>
         <p className="text-gray-600 text-center mb-6">
-          We send a code to test@gmail.com
+          We send a code to {reset.email}
         </p>
         <div className="space-y-4 ">
           {/* Ma OTP */}
@@ -51,8 +54,8 @@ const ResetPassword = () => {
             </label>
             <InputOTP
               maxLength={6}
-              value={reset.OTP}
-              onChange={(value) => setReset({ ...reset, OTP: value })}
+              value={reset.otp}
+              onChange={(value) => setReset({ ...reset, otp: value })}
             >
               <InputOTPGroup>
                 <InputOTPSlot index={0} />

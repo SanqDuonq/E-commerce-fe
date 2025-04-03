@@ -27,3 +27,7 @@ export const resetPasswordAPI = async (data: IReset) => {
   const res = await APIConfig.post("api/auth/reset-password", data);
   return res;
 };
+export const checkAuthAPI = async () => {
+  const res = await APIConfig.get("api/auth/checkAuth");
+  return res.data;
+};

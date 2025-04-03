@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import Title from "./title";
 
 const CartTotal = () => {
+  const shippingDiscount = 32000;
+  const voucherDiscount = 10000;
   const { currency, delivery_fee, getCartAmount } = useContext(ShopContext)!;
   return (
     <div className="w-full">
@@ -20,6 +22,31 @@ const CartTotal = () => {
         <hr />
         <div className="flex justify-between">
           <p>Shipping Fee</p>
+          <p>
+            {currency}
+            {delivery_fee}.00
+          </p>
+        </div>
+        {shippingDiscount ? (
+          <div className="flex justify-between text-green-500">
+            <p>Voucher Shipping Fee</p>
+            <p>
+              -{currency}
+              {shippingDiscount}.00
+            </p>
+          </div>
+        ) : null}
+        {voucherDiscount ? (
+          <div className="flex justify-between text-green-500">
+            <p>Voucher Fee</p>
+            <p>
+              -{currency}
+              {voucherDiscount}.00
+            </p>
+          </div>
+        ) : null}
+        <div className="flex justify-between">
+          <p>Voucher Fee</p>
           <p>
             {currency}
             {delivery_fee}.00

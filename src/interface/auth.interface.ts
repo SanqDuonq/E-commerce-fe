@@ -15,12 +15,13 @@ export interface IInfo {
 }
 export interface IVerify {
   email: string;
-  OTP: string;
+  otp: string;
 }
 export interface IForgotPassword {
   email: string;
 }
 export interface IReset {
-  OTP: string;
+  email: string;
+  otp: string;
   newPassword: string;
 }

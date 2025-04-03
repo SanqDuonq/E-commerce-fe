@@ -29,10 +29,12 @@ import bin_icon from "./bin_icon.png";
 import logo from "./logo.png";
 import stripe_logo from "./stripe_logo.webp";
 import paypal_logo from "./paypal_logo.jpg";
+import momo_logo from "./momo_logo.webp"
 import about_img from "./about-img.jpg";
 import contact_img from "./contact_img.jpg";
 import chair_02 from "./chair_01.jpeg";
 import forgot_password from "./forgot.jpg";
+
 export const assets = {
   logo,
   search_icon,
@@ -53,6 +55,7 @@ export const assets = {
   about_img,
   contact_img,
   forgot_password,
+  momo_logo,
 };
 // export const products = [
 //   {

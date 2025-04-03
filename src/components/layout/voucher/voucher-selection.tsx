@@ -30,11 +30,16 @@ const VoucherSelection: React.FC<VoucherSelectionProps> = ({ vouchers }) => {
 
   return (
     <div>
-      <div onClick={handleVoucherClick} style={{ cursor: "pointer" }}>
+      <p>Chọn Voucher</p>
+      <div
+        className="w-full px-3 py-2"
+        onClick={handleVoucherClick}
+        style={{ cursor: "pointer" }}
+      >
         {selectedVoucher ? (
           <SelectedVoucher voucher={selectedVoucher} />
         ) : (
-          <div>Chọn Voucher</div>
+          <>Voucher Siêu xịn</>
         )}
       </div>
 
