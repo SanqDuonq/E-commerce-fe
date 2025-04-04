@@ -3,11 +3,22 @@ import ProductItem from "@/components/layout/product-item";
 import Title from "@/components/layout/title";
 import Filter from "@/components/ui/filter";
 import TitleFilter from "@/components/ui/titleFilter";
+import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Furniture = () => {
   const [setType] = useState([]);
   const [filterProducts, setFilterProducts] = useState<ProductType[]>([]);
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(
+    
+  );
+  const handOnClick = (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    
+  };
   return (
     <div>
       <NavbarCollection />

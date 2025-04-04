@@ -1,16 +1,29 @@
-
 import mongoose from "mongoose";
 export interface IProduct {
     name: string,
-    description: string,
-    image: string,
+    thumbnail: string,
     price: number,
-    stock: number,
-    color: string[],
-    popular: boolean,
-    category: mongoose.Schema.Types.ObjectId
+    discount?: string
+    badge: 'Best Seller' | 'Limited Edition' | null,
+    status: 'New' | null,
+    description: string,
+    category: mongoose.Types.ObjectId,
+    variants: IVariant[]
+    shape?: string[]
+    reviews: IReview[]
 }
-
+export interface IVariant {
+    image: string[],
+    color: string,
+    size: string,
+    stock: number,
+    material: string
+}
+export interface IReview {
+    user: mongoose.Types.ObjectId,
+    rating: number,
+    comment: string
+}
 export interface IProductMethod {
     addProduct(data: IProduct): Promise<IProduct>,
     removeProduct(id:string): Promise<void>,

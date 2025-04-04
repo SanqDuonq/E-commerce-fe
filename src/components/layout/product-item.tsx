@@ -1,18 +1,9 @@
 import { ShopContext } from "@/context/ShopContext";
+import { IProduct } from "@/interface/product.interface";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-interface ProductItemProps {
-  id: string;
-  image: string[]; // Mảng chứa đường dẫn ảnh
-  name: string;
-  price: number;
-}
-const ProductItem: React.FC<ProductItemProps> = ({
-  id,
-  image,
-  name,
-  price,
-}) => {
+
+const ProductItem: React.FC<IProduct> = ({ IP}) => {
   const { currency } = useContext(ShopContext)!;
   return (
     <Link className="text-gray-700 cursor-pointer" to={`/product/${id}`}>

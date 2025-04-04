@@ -2,13 +2,16 @@ import { assets } from "@/assets/assets";
 import ProductItem from "@/components/layout/product-item";
 import Title from "@/components/layout/title";
 import { ShopContext } from "@/context/ShopContext";
-// import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { useContext, useState, useEffect } from "react";
-// import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavbarCollection from "@/components/layout/navbar-colection";
+import { useQuery } from "@tanstack/react-query";
+import { getProductAPI } from "@/api/product.api";
 const Collection = () => {
-  // const navigate = useNavigate();
-  // const { toast } = useToast();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [product, setProduct] = useState({});
   const { products, search, showSearch } = useContext(ShopContext)!;
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState<ProductType[]>([]);
@@ -72,6 +75,14 @@ const Collection = () => {
   useEffect(() => {
     sortProduct();
   }, [sortType]);
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["get-all-product"],
+    queryFn: () => getProductAPI({ page: 1, limit: 15 }),
+  });
+  console.log(data);
+  if (isLoading) return "Loading...";
+  if (isError) return "Fetching data error";
   return (
     <>
       <NavbarCollection />
@@ -98,12 +109,7 @@ const Collection = () => {
             <p className="mb-3 text-sm font-medium">CATEGORIES</p>
             <div className="flex flex-col gap-2 text-sm text-gray-700">
               <p className="flex gap-2">
-                <input
-                  className="w-3"
-                  type="checkbox"
-                  value={"Furniture"}
-                  onChange={toggleCategory}
-                />
+                <input className="w-3" type="checkbox" value={"Furniture"} />
                 Furniture
               </p>
               <p className="flex gap-2">
@@ -241,9 +247,8 @@ const Collection = () => {
               <option value="high-low">Sort by: High to low</option>
             </select>
           </div>
-          {/* Map Products */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
-            {filterProducts.map((item, index) => (
+            {data.data.map((item, index) => (
               <ProductItem
                 key={index}
                 id={item._id}
